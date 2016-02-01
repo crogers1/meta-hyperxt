@@ -16,8 +16,7 @@ SRC_URI += "\
 USB_DRIVER_KERNEL_MODULES = "asix usbnet mii libphy ax88179-178a"
 
 #
-# Install our rules that blacklist USB networking, and fix our grub
-# configuration.
+# Install our rules that blacklist USB networking.
 #
 do_install_append() {
 
