@@ -1,0 +1,11 @@
+diff -rupN a/etc/rpc-proxy.rules b/etc/rpc-proxy.rules
+--- a/etc/rpc-proxy.rules
++++ b/etc/rpc-proxy.rules
+@@ -26,6 +26,7 @@ allow destination com.citrix.xenclient.db interface com.citrix.xenclient.db memb
+ allow destination com.citrix.xenclient.db interface com.citrix.xenclient.db member read_binary if-boolean domstore-read-access true
+ allow destination com.citrix.xenclient.db interface com.citrix.xenclient.db member list if-boolean domstore-read-access true
+ allow destination com.citrix.xenclient.db interface com.citrix.xenclient.db member exists if-boolean domstore-read-access true
++allow destination com.citrix.xenclient.db interface com.citrix.xenclient.db member dump if-boolean domstore-read-access true
+ 
+ allow destination com.citrix.xenclient.db interface com.citrix.xenclient.db member write if-boolean domstore-write-access true
+ allow destination com.citrix.xenclient.db interface com.citrix.xenclient.db member rm if-boolean domstore-write-access true
