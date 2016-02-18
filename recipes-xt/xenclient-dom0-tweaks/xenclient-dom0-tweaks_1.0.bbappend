@@ -11,6 +11,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI += "\
   file://usb-network.conf \
   file://dom0_add_usb_networking.sh \
+  file://grub.cfg.manualpatch \
 "
 
 USB_DRIVER_KERNEL_MODULES = "asix usbnet mii libphy ax88179-178a"

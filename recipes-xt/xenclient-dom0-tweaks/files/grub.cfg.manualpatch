@@ -1,0 +1,67 @@
+diff --git a/grub.cfg b/grub.cfg
+index d879f99..b36d1ba 100644
+--- a/usr/share/xenclient/bootloader/grub.cfg
++++ b/usr/share/xenclient/bootloader/grub.cfg
+@@ -32,14 +32,14 @@ fi
+ DRM_GRAPHICS_OPTION=""
+ 
+ TBOOT_COMMON_CMD="min_ram=0x2000000 loglvl=all serial=115200,8n1,0x3f8 logging=serial,memory"
+-XEN_COMMON_CMD="console=com1 dom0_mem=min:320M,max:320M,320M com1=115200,8n1,pci mbi-video vga=current flask_enforcing=1 loglvl=debug guest_loglvl=debug"
+-LINUX_COMMON_CMD="console=hvc0 root=/dev/mapper/xenclient-root ro boot=/dev/mapper/xenclient-boot swiotlb=16384 xen_pciback.passthrough=1 consoleblank=0 video.delay_init=1 vt.global_cursor_default=0"
++XEN_COMMON_CMD="console=com1 dom0_mem=min:768M,max:768M,768M com1=115200,8n1,pci mbi-video vga=current flask_enforcing=1 loglvl=debug guest_loglvl=debug"
++LINUX_COMMON_CMD="console=hvc0 root=/dev/mapper/xenclient-root ro vmalloc=256M boot=/dev/mapper/xenclient-boot swiotlb=16384 xen_pciback.passthrough=1 consoleblank=0 video.delay_init=1 vt.global_cursor_default=0"
+ 
+ menuentry "XenClient: Normal" {
+ 	background_image /grub/booting.png
+ 	set root=(xenclient-root)
+ 	multiboot /boot/tboot.gz FIXME $TBOOT_COMMON_CMD
+-	module /boot/xen-debug.gz FIXME $XEN_COMMON_CMD console=com1 com1=115200,8n1,pci
++	module /boot/xen-debug.gz FIXME $XEN_COMMON_CMD
+ 	module /boot/vmlinuz FIXME $LINUX_COMMON_CMD $DRM_GRAPHICS_OPTION autostart
+ 	module /boot/initramfs.gz
+         module /boot/GM45_GS45_PM45_SINIT_51.BIN
+@@ -60,7 +60,7 @@ menuentry "XenClient Technical Support Option: Safe graphics" {
+ 	background_image /grub/booting.png
+ 	set root=(xenclient-root)
+ 	multiboot /boot/tboot.gz FIXME $TBOOT_COMMON_CMD
+-	module /boot/xen-debug.gz FIXME $XEN_COMMON_CMD console=com1 com1=115200,8n1,pci
++	module /boot/xen-debug.gz FIXME $XEN_COMMON_CMD
+ 	module /boot/vmlinuz FIXME $LINUX_COMMON_CMD autostart safe-graphic nomodeset
+ 	module /boot/initramfs.gz
+         module /boot/GM45_GS45_PM45_SINIT_51.BIN
+@@ -79,7 +79,7 @@ menuentry "XenClient Technical Support Option: Safe Mode (no autostart of VMs)"
+ 	background_image /grub/booting.png
+ 	set root=(xenclient-root)
+ 	multiboot /boot/tboot.gz FIXME $TBOOT_COMMON_CMD
+-	module /boot/xen-debug.gz FIXME $XEN_COMMON_CMD console=com1 com1=115200,8n1,pci
++	module /boot/xen-debug.gz FIXME $XEN_COMMON_CMD
+ 	module /boot/vmlinuz FIXME $LINUX_COMMON_CMD
+ 	module /boot/initramfs.gz
+         module /boot/GM45_GS45_PM45_SINIT_51.BIN
+@@ -99,7 +99,7 @@ menuentry "XenClient Technical Support Option: Safe Mode with AMT serial" {
+ 	background_image /grub/booting.png
+ 	set root=(xenclient-root)
+ 	multiboot /boot/tboot.gz FIXME $TBOOT_COMMON_CMD
+-	module /boot/xen-debug.gz FIXME $XEN_COMMON_CMD com1=115200,8n1,pci console=com1 com1=115200,8n1,amt
++	module /boot/xen-debug.gz FIXME $XEN_COMMON_CMD com1=115200,8n1,amt
+ 	module /boot/vmlinuz FIXME $LINUX_COMMON_CMD
+ 	module /boot/initramfs.gz
+         module /boot/GM45_GS45_PM45_SINIT_51.BIN
+@@ -119,7 +119,7 @@ menuentry "XenClient Technical Support Option: Normal Mode with synchronised con
+ 	background_image /grub/booting.png
+ 	set root=(xenclient-root)
+ 	multiboot /boot/tboot.gz FIXME $TBOOT_COMMON_CMD
+-	module /boot/xen-debug.gz FIXME $XEN_COMMON_CMD com1=115200,8n1,pci console=com1 sync_console
++	module /boot/xen-debug.gz FIXME $XEN_COMMON_CMD sync_console
+ 	module /boot/vmlinuz FIXME $LINUX_COMMON_CMD autostart
+ 	module /boot/initramfs.gz
+         module /boot/GM45_GS45_PM45_SINIT_51.BIN
+@@ -139,7 +139,7 @@ menuentry "XenClient Technical Support Option: console access" {
+ 	background_image /grub/booting.png
+ 	set root=(xenclient-root)
+ 	multiboot /boot/tboot.gz FIXME $TBOOT_COMMON_CMD
+-	module /boot/xen-debug.gz FIXME $XEN_COMMON_CMD com1=115200,8n1,pci
++	module /boot/xen-debug.gz FIXME $XEN_COMMON_CMD
+ 	module /boot/vmlinuz FIXME $LINUX_COMMON_CMD console=tty0 no-graphics fbcon
+ 	module /boot/initramfs.gz
+         module /boot/GM45_GS45_PM45_SINIT_51.BIN
